@@ -1,0 +1,27 @@
+name: CI to deploy
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '23'
+
+      - name: Install npm
+        run: npm install
+
+      - name: Running test
+        run: npm test
+
+      - name: Preparing the build
+        run: npm run build || echo "No build step"
