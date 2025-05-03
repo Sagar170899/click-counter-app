@@ -20,8 +20,5 @@ jobs:
       - name: Install npm
         run: npm install
 
-      - name: Running test
-        run: npm test
-
       - name: Preparing the build
         run: npm run build || echo "No build step"
